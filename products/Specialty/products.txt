@@ -1,0 +1,3 @@
+Red|red.jpg|15.000|Red things
+Blue|blue.jpg|25.000|Blue things
+Green|green.jpg|35.000|Green things
