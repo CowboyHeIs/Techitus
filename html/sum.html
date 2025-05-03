@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+    <style>
+        body {
+            background: #f0f0f0;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            margin-left: 10px;
+        }
+        .scroll-box {
+            overflow-x: auto;
+            white-space: nowrap;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background: #fff;
+        }
+        .product {
+            display: inline-block;
+            width: 200px;
+            margin-right: 10px;
+            background: #fff;
+            border: 1px solid #999;
+            border-radius: 5px;
+            overflow: hidden;
+            vertical-align: top;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .product h3 {
+            margin: 10px;
+            font-size: 1em;
+        }
+        .product p {
+            margin: 0 10px 10px 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+    const Root = "/products/";
+    const Types = ["signature", "specialty"];
+
+    window.onload = () => {
+        const Container = document.getElementById("container");
+
+        Types.forEach(Type => {
+            fetch(Root + Type + "/products.txt")
+            .then(Res => Res.text())
+            .then(Text => {
+                const Sec = document.createElement("div");
+                Sec.className = "section";
+
+                const Title = document.createElement("h2");
+                Title.innerText = Type[0].toUpperCase() + Type.slice(1) + " Products";
+                Sec.appendChild(Title);
+
+                const Scroll = document.createElement("div");
+                Scroll.className = "scroll-box";
+
+                Text.trim().split("\n").forEach(Line => {
+                    const [Name, Img, Price, Desc] = Line.split("|");
+                    const Box = document.createElement("div");
+                    Box.className = "product";
+                    Box.innerHTML = ` 
+                        <img src="/images/${Type}/${Img}">
+                        <h3>${Name}</h3>
+                        <p>Rp ${Price}</p>
+                        <p>${Desc}</p>
+                    `;
+                    Scroll.appendChild(Box);
+                });
+
+                Sec.appendChild(Scroll);
+                Container.appendChild(Sec);
+            });
+        });
+    };
+    </script>
+</body>
+</html>
