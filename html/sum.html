@@ -1,66 +1,27 @@
-<!-- sum.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Summary</title>
-    <style>
-        @font-face {
-            font-family: 'Instrument Sans';
-            src: url('/fonts/InstrumentSans-Bold.woff2') format('woff2');
-            font-weight: bold;
-        }
-        body {
-            background: #5B3A1D;
-            font-family: 'Instrument Sans', sans-serif;
-            margin: 0;
-            padding: 20px;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .section h2 {
-            margin-left: 10px;
-            font-weight: bold;
-        }
-        .scroll-box {
-            overflow-x: auto;
-            white-space: nowrap;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background: #fff;
-        }
-        .product {
-            display: inline-block;
-            width: 200px;
-            margin-right: 10px;
-            background: #fff;
-            border: 1px solid #999;
-            border-radius: 5px;
-            overflow: hidden;
-            vertical-align: top;
-            font-weight: bold;
-        }
-        .product img {
-            width: 100%;
-            height: auto;
-        }
-        .product h3 {
-            margin: 10px;
-            font-size: 1em;
-        }
-        .product p {
-            margin: 0 10px 10px 10px;
-            font-size: 0.9em;
-        }
-    </style>
+    <title>Moses Order</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+
+    <!-- Top Box -->
+    <div class="top-box">
+        <a href="/intro" class="link">ABOUT US</a>
+        <a class="logo-container" href="/">
+            <img src="images/Logo.png" alt="Logo" style="height: 60px; width: auto;">
+        </a>
+        <a href="/sum" class="link">ORDER!</a>
+    </div>
+
+    <!-- Product Sections -->
     <div id="container"></div>
 
     <script>
     const Root="/products/";
-    const Types=["signature","specialty"];
+    const Types=["signature","specialty","main-course"];
 
     window.onload=()=>{
         const C=document.getElementById("container");
@@ -69,7 +30,9 @@
             .then(r=>r.text())
             .then(txt=>{
                 const S=document.createElement("div");S.className="section";
-                const H=document.createElement("h2");H.innerText=T[0].toUpperCase()+T.slice(1)+" Products";S.appendChild(H);
+                const H=document.createElement("h2");
+                H.innerText=T.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+                S.appendChild(H);
                 const B=document.createElement("div");B.className="scroll-box";
                 txt.trim().split("\n").forEach(L=>{
                     const [N,I,P,D]=L.split("|");
@@ -82,5 +45,15 @@
         });
     };
     </script>
+    <div>
+        
+
+
+        Made by Heinrich
+
+
+
+    </div>
+
 </body>
 </html>

@@ -7,7 +7,7 @@ java -cp bin Server
 Colours :
 
 // Darkest to Lightest brown
-3E2B1C
+3E2B1C rgba(62, 43, 28)
 5B3A1D
 6A4B29
 7F5C38

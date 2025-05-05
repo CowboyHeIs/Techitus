@@ -48,6 +48,10 @@ public class Server {
                 case "/sum.html":
                     serveFile(outStream, "html/sum.html", "text/html");
                     break;
+                case "/intro":
+                case "/intro.html":
+                    serveFile(outStream, "html/intro.html", "text/html");
+                    break;
                 default:
                     Path full = resolveStaticFile(path);
                     if (Files.exists(full)) {
