@@ -1,0 +1,11 @@
+plans :
+01. Make base html
+02. Make base server
+03. Consider using engine instead of pure java
+04. Make sure works on local server first
+05. All functionalities works (except WA API)
+06. Design main.html
+07. Design sum.html
+08. Design intro.html
+09. Deploy to some free java-able server
+10. Add WA API functionality
