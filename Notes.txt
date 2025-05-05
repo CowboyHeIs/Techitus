@@ -1,0 +1,14 @@
+Start :
+javac -d bin src/*.java
+java -cp bin Server
+
+
+
+Colours :
+
+// Darkest to Lightest brown
+3E2B1C
+5B3A1D
+6A4B29
+7F5C38
+

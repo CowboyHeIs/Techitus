@@ -1,12 +1,18 @@
+<!-- sum.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Summary</title>
     <style>
+        @font-face {
+            font-family: 'Instrument Sans';
+            src: url('/fonts/InstrumentSans-Bold.woff2') format('woff2');
+            font-weight: bold;
+        }
         body {
-            background: #f0f0f0;
-            font-family: sans-serif;
+            background: #5B3A1D;
+            font-family: 'Instrument Sans', sans-serif;
             margin: 0;
             padding: 20px;
         }
@@ -15,6 +21,7 @@
         }
         .section h2 {
             margin-left: 10px;
+            font-weight: bold;
         }
         .scroll-box {
             overflow-x: auto;
@@ -32,6 +39,7 @@
             border-radius: 5px;
             overflow: hidden;
             vertical-align: top;
+            font-weight: bold;
         }
         .product img {
             width: 100%;
@@ -51,41 +59,25 @@
     <div id="container"></div>
 
     <script>
-    const Root = "/products/";
-    const Types = ["signature", "specialty"];
+    const Root="/products/";
+    const Types=["signature","specialty"];
 
-    window.onload = () => {
-        const Container = document.getElementById("container");
-
-        Types.forEach(Type => {
-            fetch(Root + Type + "/products.txt")
-            .then(Res => Res.text())
-            .then(Text => {
-                const Sec = document.createElement("div");
-                Sec.className = "section";
-
-                const Title = document.createElement("h2");
-                Title.innerText = Type[0].toUpperCase() + Type.slice(1) + " Products";
-                Sec.appendChild(Title);
-
-                const Scroll = document.createElement("div");
-                Scroll.className = "scroll-box";
-
-                Text.trim().split("\n").forEach(Line => {
-                    const [Name, Img, Price, Desc] = Line.split("|");
-                    const Box = document.createElement("div");
-                    Box.className = "product";
-                    Box.innerHTML = ` 
-                        <img src="/images/${Type}/${Img}">
-                        <h3>${Name}</h3>
-                        <p>Rp ${Price}</p>
-                        <p>${Desc}</p>
-                    `;
-                    Scroll.appendChild(Box);
+    window.onload=()=>{
+        const C=document.getElementById("container");
+        Types.forEach(T=>{
+            fetch(Root+T+"/products.txt")
+            .then(r=>r.text())
+            .then(txt=>{
+                const S=document.createElement("div");S.className="section";
+                const H=document.createElement("h2");H.innerText=T[0].toUpperCase()+T.slice(1)+" Products";S.appendChild(H);
+                const B=document.createElement("div");B.className="scroll-box";
+                txt.trim().split("\n").forEach(L=>{
+                    const [N,I,P,D]=L.split("|");
+                    const Dv=document.createElement("div");Dv.className="product";
+                    Dv.innerHTML=`<img src="/products/${T}/${I}"><h3>${N}</h3><p>Rp ${P}</p><p>${D}</p>`;
+                    B.appendChild(Dv);
                 });
-
-                Sec.appendChild(Scroll);
-                Container.appendChild(Sec);
+                S.appendChild(B);C.appendChild(S);
             });
         });
     };

@@ -1,3 +1,9 @@
 Red|red.jpg|15.000|Red things
 Blue|blue.jpg|25.000|Blue things
 Green|green.jpg|35.000|Green things
+Red2|red.jpg|15.000|Red things
+Blue2|blue.jpg|25.000|Blue things
+Green2|green.jpg|35.000|Green things
+Red3|red.jpg|15.000|Red things
+Blue3|blue.jpg|25.000|Blue things
+Green3|green.jpg|35.000|Green things
