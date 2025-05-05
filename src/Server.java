@@ -67,6 +67,7 @@ public class Server {
         if (path.startsWith("/products/")) return Paths.get("products", path.substring(10));
         if (path.startsWith("/images/")) return Paths.get("images", path.substring(8));
         if (path.startsWith("/fonts/")) return Paths.get("fonts", path.substring(7));
+        if (path.equals("/style.css")) return Paths.get("html", "style.css"); 
         return Paths.get("html", path.replaceFirst("/", ""));
     }
 
